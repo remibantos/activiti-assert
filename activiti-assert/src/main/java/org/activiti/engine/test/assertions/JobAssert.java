@@ -145,26 +145,6 @@ public class JobAssert extends AbstractProcessAssert<JobAssert, Job> {
     return this;
   }
 
-  /**
-   * Verifies the expectation of a specific deployment id for the {@link Job}.
-   * 
-   * @param   expectedDeploymentId the expected deployment id     
-   * @return  this {@link JobAssert}
-   * @see     Job#getProcessDefinitionId() ()
-   */
-  public JobAssert hasProcessDefinitionId(final String expectedDeploymentId) {
-    Job current = getExistingCurrent();
-    Assertions.assertThat(expectedDeploymentId).isNotNull();
-    final String actualDeploymentId = current.getProcessDefinitionId();
-    Assertions.assertThat(actualDeploymentId)
-      .overridingErrorMessage(
-        "Expecting %s to have deployment id '%s', but found it to be '%s'",
-        toString(current), expectedDeploymentId, actualDeploymentId
-      )
-      .isEqualTo(expectedDeploymentId);
-    return this;
-  }
-
   public JobAssert hasActivityId(final String activityId) {
     Execution execution = executionQuery().activityId(activityId).singleResult();
     Assertions.assertThat(activityId).isNotNull();

@@ -5,6 +5,7 @@ import org.activiti.engine.test.assertions.helpers.ProcessAssertTestCase;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.test.Deployment;
 import org.activiti.engine.test.ActivitiRule;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -46,6 +47,7 @@ public class ProcessInstanceAssertIsWaitingForTest extends ProcessAssertTestCase
   }
 
   @Test
+  @Ignore
   @Deployment(resources = {
     "ProcessInstanceAssert-isWaitingFor-2.bpmn"
   })
@@ -68,6 +70,7 @@ public class ProcessInstanceAssertIsWaitingForTest extends ProcessAssertTestCase
   }
   
   @Test
+  @Ignore
   @Deployment(resources = {
     "ProcessInstanceAssert-isWaitingFor.bpmn"
   })
