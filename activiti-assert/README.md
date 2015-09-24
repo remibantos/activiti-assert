@@ -1,6 +1,6 @@
 # activiti-assert User Guide
 
-This little community-extension to [camunda BPM](http://camunda.org) wants to make it easier to write tests for BPMN process definitions executed with the camunda process engine. 
+This extension to [activiti](http://activiti.org) wants to make it easier to write tests for BPMN process definitions executed with the activiti process engine. 
 For that reason, a set of **assertions** based on Joel Costigliola's [AssertJ](https://github.com/joel-costigliola/assertj-core) rich assertions library for java are provided as well as a few little **helpers** to make it a bit easier to drive you through your process.
 
 [Getting started](../README.md#getting-started)
@@ -748,12 +748,12 @@ assertThat(processDefinition()).hasActiveInstances(1);
 <a name="advanced"/>
 ## Advanced topics
 
-#### Add camunda-bpm-assert to Eclipse
+#### Add activiti-assert to Eclipse
 
-Eclipse will remove the static import, when it organizes the imports. Thus it is recommended to add camunda-bpm-assert to your 'Content Assist Favorites'.In Eclipse go to Window -> Preferences -> Java -> Editor -> Content Assist -> Favorites -> New Type... and add the following type:
+Eclipse will remove the static import, when it organizes the imports. Thus it is recommended to add activiti-assert to your 'Content Assist Favorites'.In Eclipse go to Window -> Preferences -> Java -> Editor -> Content Assist -> Favorites -> New Type... and add the following type:
 
 ```java
-org.camunda.bpm.engine.test.assertions.ProcessEngineTests
+org.activiti.engine.test.assertions.ProcessEngineTests
 ```
 
 <a name="non-default-engine"/>
