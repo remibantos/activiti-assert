@@ -3,7 +3,6 @@ package org.activiti.engine.test.util;
 import org.activiti.engine.history.HistoricActivityInstance;
 
 import java.util.Comparator;
-import java.util.IllegalFormatException;
 import java.util.UUID;
 
 /**

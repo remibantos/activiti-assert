@@ -1,5 +1,6 @@
 package org.activiti.engine.test.assertions;
 
+import org.activiti.engine.*;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.repository.ProcessDefinitionQuery;
 import org.activiti.engine.runtime.*;
@@ -32,17 +33,6 @@ public class ProcessEngineTests extends ProcessEngineAssertions {
    */
   public static RuntimeService runtimeService() {
     return processEngine().getRuntimeService();
-  }
-
-  /**
-   * Helper method to easily access AuthorizationService
-   *
-   * @return  AuthorizationService of process engine bound to this 
-   *          testing thread
-   * @see     org.activiti.engine.AuthorizationService
-   */
-  public static AuthorizationService authorizationService() {
-    return processEngine().getAuthorizationService();
   }
 
   /**
@@ -358,7 +348,7 @@ public class ProcessEngineTests extends ProcessEngineAssertions {
    *          definition should be retrieved.
    * @return  the process definition compliant to the given query. May 
    *          return null in case no such process definition exists.
-   * @throws  org.activiti.engine.ProcessEngineException in case more 
+   * @throws  org.activiti.engine.ActivitiException in case more
    *          than one process definition is delivered by the underlying 
    *          query.
    */

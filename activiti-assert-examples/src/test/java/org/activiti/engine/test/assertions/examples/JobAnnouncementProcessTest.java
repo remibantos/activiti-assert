@@ -24,7 +24,7 @@ import static org.mockito.Mockito.*;
 public class JobAnnouncementProcessTest {
 
   @Rule
-  public final ActivitiRule processEngineRule = new ActivitiRule();
+  public final ActivitiRule ActivitiRule = new ActivitiRule();
 
   @Mock
   public JobAnnouncementService jobAnnouncementService;

@@ -2,15 +2,16 @@ package org.activiti.engine.test.assertions;
 
 import org.activiti.engine.test.assertions.helpers.Failure;
 import org.activiti.engine.test.assertions.helpers.ProcessAssertTestCase;
-import org.activiti.engine.ProcessEngineException;
+import org.activiti.engine.ActivitiException;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.test.Deployment;
-import org.activiti.engine.test.ProcessEngineRule;
+import org.activiti.engine.test.ActivitiRule;
 import org.junit.After;
 import org.junit.Rule;
 import org.junit.Test;
 
 import static org.activiti.engine.test.assertions.ProcessEngineAssertions.assertThat;
+import static org.activiti.engine.test.assertions.ProcessEngineTests.task;
 
 /**
  * @author Martin Schimak <martin.schimak@plexiti.com>
@@ -18,7 +19,7 @@ import static org.activiti.engine.test.assertions.ProcessEngineAssertions.assert
 public class ProcessEngineTestsTaskTest extends ProcessAssertTestCase {
 
   @Rule
-  public ProcessEngineRule processEngineRule = new ProcessEngineRule();
+  public ActivitiRule ActivitiRule = new ActivitiRule();
 
   @After
   public void tearDown() {
@@ -41,7 +42,7 @@ public class ProcessEngineTestsTaskTest extends ProcessAssertTestCase {
     // When
     ProcessEngineAssertions.assertThat(processInstance).isNotNull();
     // Then
-    ProcessEngineAssertions.assertThat(ProcessEngineTests.task()).isNotNull().hasDefinitionKey("UserTask_1");
+    ProcessEngineAssertions.assertThat(task()).isNotNull().hasDefinitionKey("UserTask_1");
   }
 
   @Test
@@ -61,7 +62,7 @@ public class ProcessEngineTestsTaskTest extends ProcessAssertTestCase {
     expect(new Failure() {
       @Override
       public void when() {
-        ProcessEngineTests.task();
+        task();
       }
     }, IllegalStateException.class);
   }
@@ -82,14 +83,14 @@ public class ProcessEngineTestsTaskTest extends ProcessAssertTestCase {
     // And
     ProcessEngineAssertions.assertThat(processInstance).isNotNull();
     // And
-    ProcessEngineTests.complete(ProcessEngineTests.task());
+    ProcessEngineTests.complete(task());
     // When
     expect(new Failure() {
       @Override
       public void when() {
-        ProcessEngineTests.task();
+        task();
       }
-    }, ProcessEngineException.class);
+    }, ActivitiException.class);
   }
 
   @Test
@@ -108,7 +109,7 @@ public class ProcessEngineTestsTaskTest extends ProcessAssertTestCase {
     // When
     ProcessEngineAssertions.assertThat(processInstance).isNotNull();
     // Then
-    ProcessEngineAssertions.assertThat(ProcessEngineTests.task("UserTask_1")).isNotNull().hasDefinitionKey("UserTask_1");
+    ProcessEngineAssertions.assertThat(task("UserTask_1")).isNotNull().hasDefinitionKey("UserTask_1");
   }
 
   @Test
@@ -126,11 +127,11 @@ public class ProcessEngineTestsTaskTest extends ProcessAssertTestCase {
     );
     // When
     ProcessEngineAssertions.assertThat(processInstance).isNotNull();
-    ProcessEngineTests.complete(ProcessEngineTests.task());
+    ProcessEngineTests.complete(task());
     // Then
-    ProcessEngineAssertions.assertThat(ProcessEngineTests.task("UserTask_2")).isNotNull().hasDefinitionKey("UserTask_2");
+    ProcessEngineAssertions.assertThat(task("UserTask_2")).isNotNull().hasDefinitionKey("UserTask_2");
     // And
-    ProcessEngineAssertions.assertThat(ProcessEngineTests.task("UserTask_3")).isNotNull().hasDefinitionKey("UserTask_3");
+    ProcessEngineAssertions.assertThat(task("UserTask_3")).isNotNull().hasDefinitionKey("UserTask_3");
   }
 
   @Test
@@ -150,7 +151,7 @@ public class ProcessEngineTestsTaskTest extends ProcessAssertTestCase {
     expect(new Failure() {
       @Override
       public void when() {
-        ProcessEngineTests.task("UserTask_1");
+        task("UserTask_1");
       }
     }, IllegalStateException.class);
   }
@@ -211,7 +212,7 @@ public class ProcessEngineTestsTaskTest extends ProcessAssertTestCase {
     );
     // When
     ProcessEngineAssertions.assertThat(processInstance).isNotNull();
-    ProcessEngineTests.complete(ProcessEngineTests.task());
+    ProcessEngineTests.complete(task());
     // Then
     ProcessEngineAssertions.assertThat(task(ProcessEngineTests.taskQuery().taskDefinitionKey("UserTask_2"))).isNotNull().hasDefinitionKey("UserTask_2");
     // And
@@ -234,14 +235,14 @@ public class ProcessEngineTestsTaskTest extends ProcessAssertTestCase {
     // And
     ProcessEngineAssertions.assertThat(processInstance).isNotNull();
     // And
-    ProcessEngineTests.complete(ProcessEngineTests.task());
+    ProcessEngineTests.complete(task());
     // When
     expect(new Failure() {
       @Override
       public void when() {
-        ProcessEngineTests.task(ProcessEngineTests.taskQuery());
+        task(ProcessEngineTests.taskQuery());
       }
-    }, ProcessEngineException.class);
+    }, ActivitiException.class);
   }
 
   @Test
@@ -258,7 +259,7 @@ public class ProcessEngineTestsTaskTest extends ProcessAssertTestCase {
       "ProcessEngineTests-task"
     );
     // Then
-    ProcessEngineAssertions.assertThat(ProcessEngineTests.task(processInstance)).isNotNull().hasDefinitionKey("UserTask_1");
+    ProcessEngineAssertions.assertThat(task(processInstance)).isNotNull().hasDefinitionKey("UserTask_1");
   }
 
   @Test
@@ -275,14 +276,14 @@ public class ProcessEngineTestsTaskTest extends ProcessAssertTestCase {
       "ProcessEngineTests-task"
     );
     // And
-    ProcessEngineTests.complete(ProcessEngineTests.task(processInstance));
+    ProcessEngineTests.complete(task(processInstance));
     // When
     expect(new Failure() {
       @Override
       public void when() {
-        ProcessEngineTests.task(processInstance);
+        task(processInstance);
       }
-    }, ProcessEngineException.class);
+    }, ActivitiException.class);
   }
 
   @Test
@@ -299,7 +300,7 @@ public class ProcessEngineTestsTaskTest extends ProcessAssertTestCase {
       "ProcessEngineTests-task"
     );
     // Then
-    ProcessEngineAssertions.assertThat(ProcessEngineTests.task("UserTask_1", processInstance)).isNotNull().hasDefinitionKey("UserTask_1");
+    ProcessEngineAssertions.assertThat(task("UserTask_1", processInstance)).isNotNull().hasDefinitionKey("UserTask_1");
   }
 
   @Test
@@ -316,11 +317,11 @@ public class ProcessEngineTestsTaskTest extends ProcessAssertTestCase {
       "ProcessEngineTests-task"
     );
     // When
-    ProcessEngineTests.complete(ProcessEngineTests.task(processInstance));
+    ProcessEngineTests.complete(task(processInstance));
     // Then
-    ProcessEngineAssertions.assertThat(ProcessEngineTests.task("UserTask_2", processInstance)).isNotNull().hasDefinitionKey("UserTask_2");
+    ProcessEngineAssertions.assertThat(task("UserTask_2", processInstance)).isNotNull().hasDefinitionKey("UserTask_2");
     // And
-    ProcessEngineAssertions.assertThat(ProcessEngineTests.task("UserTask_3", processInstance)).isNotNull().hasDefinitionKey("UserTask_3");
+    ProcessEngineAssertions.assertThat(task("UserTask_3", processInstance)).isNotNull().hasDefinitionKey("UserTask_3");
   }
 
   @Test
@@ -354,7 +355,7 @@ public class ProcessEngineTestsTaskTest extends ProcessAssertTestCase {
       "ProcessEngineTests-task"
     );
     // When
-    ProcessEngineTests.complete(ProcessEngineTests.task(processInstance));
+    ProcessEngineTests.complete(task(processInstance));
     // Then
     ProcessEngineAssertions.assertThat(task(ProcessEngineTests.taskQuery().taskDefinitionKey("UserTask_2"), processInstance)).isNotNull().hasDefinitionKey("UserTask_2");
     // And
@@ -375,14 +376,14 @@ public class ProcessEngineTestsTaskTest extends ProcessAssertTestCase {
       "ProcessEngineTests-task"
     );
     // And
-    ProcessEngineTests.complete(ProcessEngineTests.task(processInstance));
+    ProcessEngineTests.complete(task(processInstance));
     // When
     expect(new Failure() {
       @Override
       public void when() {
-        ProcessEngineTests.task(ProcessEngineTests.taskQuery(), processInstance);
+        task(ProcessEngineTests.taskQuery(), processInstance);
       }
-    }, ProcessEngineException.class);
+    }, ActivitiException.class);
   }
 
 }

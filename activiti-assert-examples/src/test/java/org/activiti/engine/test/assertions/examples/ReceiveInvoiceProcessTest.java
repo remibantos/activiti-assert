@@ -1,7 +1,7 @@
 package org.activiti.engine.test.assertions.examples;
 
 import org.activiti.engine.test.Deployment;
-import org.activiti.engine.test.ProcessEngineRule;
+import org.activiti.engine.test.ActivitiRule;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -13,7 +13,7 @@ import org.junit.Test;
 public class ReceiveInvoiceProcessTest {
 
   @Rule
-  public final ProcessEngineRule processEngineRule = new ProcessEngineRule();
+  public final ActivitiRule ActivitiRule = new ActivitiRule();
 
   @Test
   @Deployment(resources = "camunda-testing-invoice-en.bpmn")

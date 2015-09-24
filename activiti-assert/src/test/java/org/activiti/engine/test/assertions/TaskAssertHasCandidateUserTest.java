@@ -5,7 +5,7 @@ import org.activiti.engine.test.assertions.helpers.ProcessAssertTestCase;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 import org.activiti.engine.test.Deployment;
-import org.activiti.engine.test.ProcessEngineRule;
+import org.activiti.engine.test.ActivitiRule;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -15,7 +15,7 @@ import org.junit.Test;
 public class TaskAssertHasCandidateUserTest extends ProcessAssertTestCase {
 
   @Rule
-  public ProcessEngineRule processEngineRule = new ProcessEngineRule();
+  public ActivitiRule ActivitiRule = new ActivitiRule();
 
   @Test
   @Deployment(resources = {

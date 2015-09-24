@@ -1,11 +1,14 @@
 package org.activiti.engine.test.assertions;
 
 import org.activiti.engine.test.Deployment;
-import org.activiti.engine.test.ProcessEngineRule;
+import org.activiti.engine.test.ActivitiRule;
 import org.activiti.engine.test.assertions.helpers.Failure;
 import org.activiti.engine.test.assertions.helpers.ProcessAssertTestCase;
 import org.junit.Rule;
 import org.junit.Test;
+
+import static org.activiti.engine.test.assertions.ProcessEngineAssertions.assertThat;
+import static org.activiti.engine.test.assertions.ProcessEngineTests.*;
 
 /**
  * @author Martin Schimak <martin.schimak@plexiti.com>
@@ -13,7 +16,7 @@ import org.junit.Test;
 public class JobAssertHasDeploymentIdTest extends ProcessAssertTestCase {
 
   @Rule
-  public ProcessEngineRule processEngineRule = new ProcessEngineRule();
+  public ActivitiRule ActivitiRule = new ActivitiRule();
 
   @Test
   @Deployment(resources = {
@@ -27,7 +30,7 @@ public class JobAssertHasDeploymentIdTest extends ProcessAssertTestCase {
     // Then
     assertThat(jobQuery().singleResult()).isNotNull();
     // And
-    assertThat(jobQuery().singleResult()).hasDeploymentId(processDefinitionQuery().processDefinitionId(processInstanceQuery().singleResult().getProcessDefinitionId()).singleResult().getDeploymentId());
+    assertThat(jobQuery().singleResult()).hasProcessDefinitionId(processDefinitionQuery().processDefinitionId(processInstanceQuery().singleResult().getProcessDefinitionId()).singleResult().getDeploymentId());
   }
 
   @Test
@@ -45,7 +48,7 @@ public class JobAssertHasDeploymentIdTest extends ProcessAssertTestCase {
     expect(new Failure() {
       @Override
       public void when() {
-        ProcessEngineAssertions.assertThat(jobQuery().singleResult()).hasDeploymentId("otherDeploymentId");
+        ProcessEngineAssertions.assertThat(jobQuery().singleResult()).hasProcessDefinitionId("otherDeploymentId");
       }
     });
   }
@@ -65,7 +68,7 @@ public class JobAssertHasDeploymentIdTest extends ProcessAssertTestCase {
     expect(new Failure() {
       @Override
       public void when() {
-        ProcessEngineAssertions.assertThat(jobQuery().singleResult()).hasDeploymentId(null);
+        ProcessEngineAssertions.assertThat(jobQuery().singleResult()).hasProcessDefinitionId(null);
       }
     });
   }

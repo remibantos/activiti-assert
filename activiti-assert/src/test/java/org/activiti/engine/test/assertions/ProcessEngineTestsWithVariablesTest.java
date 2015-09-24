@@ -4,6 +4,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import static org.activiti.engine.test.assertions.ProcessEngineAssertions.assertThat;
+import static org.activiti.engine.test.assertions.ProcessEngineTests.withVariables;
+import static org.assertj.core.api.Fail.fail;
+
 import java.util.*;
 
 /**

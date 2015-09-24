@@ -2,10 +2,10 @@ package org.activiti.engine.test.assertions;
 
 import org.activiti.engine.test.assertions.helpers.Failure;
 import org.activiti.engine.test.assertions.helpers.ProcessAssertTestCase;
-import org.activiti.engine.ProcessEngineException;
+import org.activiti.engine.ActivitiException;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.test.Deployment;
-import org.activiti.engine.test.ProcessEngineRule;
+import org.activiti.engine.test.ActivitiRule;
 import org.activiti.engine.test.mock.Mocks;
 import org.junit.After;
 import org.junit.Rule;
@@ -19,7 +19,7 @@ import static org.activiti.engine.test.assertions.ProcessEngineAssertions.assert
 public class ProcessEngineTestsJobTest extends ProcessAssertTestCase {
 
   @Rule
-  public ProcessEngineRule processEngineRule = new ProcessEngineRule();
+  public ActivitiRule ActivitiRule = new ActivitiRule();
 
   @After
   public void tearDown() {
@@ -92,7 +92,7 @@ public class ProcessEngineTestsJobTest extends ProcessAssertTestCase {
       public void when() {
         ProcessEngineTests.job();
       }
-    }, ProcessEngineException.class);
+    }, ActivitiException.class);
   }
 
   @Test
@@ -227,7 +227,7 @@ public class ProcessEngineTestsJobTest extends ProcessAssertTestCase {
       public void when() {
         ProcessEngineTests.job(ProcessEngineTests.jobQuery());
       }
-    }, ProcessEngineException.class);
+    }, ActivitiException.class);
   }
 
   @Test
@@ -270,7 +270,7 @@ public class ProcessEngineTestsJobTest extends ProcessAssertTestCase {
       public void when() {
         ProcessEngineTests.job(processInstance);
       }
-    }, ProcessEngineException.class);
+    }, ActivitiException.class);
   }
 
   @Test
@@ -353,7 +353,7 @@ public class ProcessEngineTestsJobTest extends ProcessAssertTestCase {
       public void when() {
         ProcessEngineTests.job(ProcessEngineTests.jobQuery(), processInstance);
       }
-    }, ProcessEngineException.class);
+    }, ActivitiException.class);
   }
 
 }

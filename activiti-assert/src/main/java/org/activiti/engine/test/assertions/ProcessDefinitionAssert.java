@@ -87,12 +87,6 @@ public class ProcessDefinitionAssert extends AbstractProcessAssert<ProcessDefini
     return super.executionQuery().processDefinitionId(actual.getId());
   }
 
-  /* VariableInstanceQuery, NOT supported, call super for unnarrowed query */
-  @Override
-  protected VariableInstanceQuery variableInstanceQuery() {
-    throw new UnsupportedOperationException();
-  }
-
   /* HistoricActivityInstanceQuery, automatically narrowed to actual {@link ProcessDefinition} */
   @Override
   protected HistoricActivityInstanceQuery historicActivityInstanceQuery() {

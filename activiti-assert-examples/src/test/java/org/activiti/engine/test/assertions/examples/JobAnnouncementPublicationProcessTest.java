@@ -5,7 +5,7 @@ import org.activiti.engine.test.assertions.ProcessEngineTests;
 import org.activiti.engine.test.assertions.examples.jobannouncement.JobAnnouncement;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.test.Deployment;
-import org.activiti.engine.test.ProcessEngineRule;
+import org.activiti.engine.test.ActivitiRule;
 import org.activiti.engine.test.mock.Mocks;
 import org.activiti.engine.test.assertions.examples.jobannouncement.JobAnnouncementService;
 import org.junit.After;
@@ -23,7 +23,7 @@ import static org.mockito.Mockito.*;
  */
 public class JobAnnouncementPublicationProcessTest {
 
-  @Rule public ProcessEngineRule processEngineRule = new ProcessEngineRule();
+  @Rule public ActivitiRule ActivitiRule = new ActivitiRule();
 
   @Mock public JobAnnouncementService jobAnnouncementService;
   @Mock public JobAnnouncement jobAnnouncement;

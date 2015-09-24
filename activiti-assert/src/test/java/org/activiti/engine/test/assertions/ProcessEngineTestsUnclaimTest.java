@@ -9,7 +9,7 @@ import org.activiti.engine.test.assertions.helpers.Failure;
 import org.activiti.engine.test.assertions.helpers.ProcessAssertTestCase;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.test.Deployment;
-import org.activiti.engine.test.ProcessEngineRule;
+import org.activiti.engine.test.ActivitiRule;
 import org.junit.After;
 import org.junit.Rule;
 import org.junit.Test;
@@ -20,7 +20,7 @@ import org.junit.Test;
 public class ProcessEngineTestsUnclaimTest extends ProcessAssertTestCase {
 
   @Rule
-  public ProcessEngineRule processEngineRule = new ProcessEngineRule();
+  public ActivitiRule ActivitiRule = new ActivitiRule();
 
   @After
   public void tearDown() {

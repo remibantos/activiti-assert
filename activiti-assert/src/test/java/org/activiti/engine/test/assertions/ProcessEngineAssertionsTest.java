@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import static org.activiti.engine.test.assertions.ProcessEngineAssertions.assertThat;
 /**
  * @author Martin Schimak <martin.schimak@plexiti.com>
  */

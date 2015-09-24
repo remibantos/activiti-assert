@@ -1,5 +1,6 @@
 package org.activiti.engine.test.assertions;
 
+import org.activiti.engine.*;
 import org.activiti.engine.repository.ProcessDefinitionQuery;
 import org.activiti.engine.runtime.ExecutionQuery;
 import org.activiti.engine.runtime.JobQuery;
@@ -9,6 +10,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.mockito.Mockito.*;
+
+import static org.activiti.engine.test.assertions.ProcessEngineAssertions.assertThat;
 
 /**
  * @author Martin Schimak <martin.schimak@plexiti.com>
@@ -41,18 +44,6 @@ public class ProcessEngineTestsTest {
     verifyNoMoreInteractions(processEngine);
   }
 
-  @Test
-  public void testAuthorizationService() {
-    // Given
-    AuthorizationService authorizationService = mock(AuthorizationService.class);
-    when(processEngine.getAuthorizationService()).thenReturn(authorizationService);
-    // When
-    AuthorizationService returnedService = ProcessEngineTests.authorizationService();
-    // Then
-    assertThat(returnedService).isNotNull().isSameAs(authorizationService);
-    verify(processEngine, times(1)).getAuthorizationService();
-    verifyNoMoreInteractions(processEngine);
-  }
 
   @Test
   public void testFormService() {

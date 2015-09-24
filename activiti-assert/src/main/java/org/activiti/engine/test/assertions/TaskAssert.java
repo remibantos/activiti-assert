@@ -264,14 +264,6 @@ public class TaskAssert extends AbstractProcessAssert<TaskAssert, Task> {
     return super.executionQuery().processInstanceId(actual.getProcessInstanceId());
   }
 
-  /* VariableInstanceQuery, automatically narrowed to {@link ProcessInstance} of 
-   * actual {@link Task} 
-   */
-  @Override
-  protected VariableInstanceQuery variableInstanceQuery() {
-    return super.variableInstanceQuery().processInstanceIdIn(actual.getProcessInstanceId());
-  }
-
   /* HistoricActivityInstanceQuery, automatically narrowed to {@link ProcessInstance} of actual {@link Task} */
   @Override
   protected HistoricActivityInstanceQuery historicActivityInstanceQuery() {

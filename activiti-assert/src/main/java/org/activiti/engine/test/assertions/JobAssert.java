@@ -150,12 +150,12 @@ public class JobAssert extends AbstractProcessAssert<JobAssert, Job> {
    * 
    * @param   expectedDeploymentId the expected deployment id     
    * @return  this {@link JobAssert}
-   * @see     org.activiti.engine.runtime.Job#getDeploymentId()
+   * @see     Job#getProcessDefinitionId() ()
    */
-  public JobAssert hasDeploymentId(final String expectedDeploymentId) {
+  public JobAssert hasProcessDefinitionId(final String expectedDeploymentId) {
     Job current = getExistingCurrent();
     Assertions.assertThat(expectedDeploymentId).isNotNull();
-    final String actualDeploymentId = current.getDeploymentId();
+    final String actualDeploymentId = current.getProcessDefinitionId();
     Assertions.assertThat(actualDeploymentId)
       .overridingErrorMessage(
         "Expecting %s to have deployment id '%s', but found it to be '%s'",
@@ -166,7 +166,7 @@ public class JobAssert extends AbstractProcessAssert<JobAssert, Job> {
   }
 
   public JobAssert hasActivityId(final String activityId) {
-    Execution execution = executionQuery().activityId(activityId).active().singleResult();
+    Execution execution = executionQuery().activityId(activityId).singleResult();
     Assertions.assertThat(activityId).isNotNull();
     String failureMessage = "Expecting %s to correspond to activity with id '%s', " +
       "but did not find that to be true";
@@ -227,13 +227,6 @@ public class JobAssert extends AbstractProcessAssert<JobAssert, Job> {
     return super.executionQuery().processInstanceId(actual.getProcessInstanceId());
   }
 
-  /* VariableInstanceQuery, automatically narrowed to {@link ProcessInstance} of 
-   * actual {@link job} 
-   */
-  @Override
-  protected VariableInstanceQuery variableInstanceQuery() {
-    return super.variableInstanceQuery().processInstanceIdIn(actual.getProcessInstanceId());
-  }
 
   /* HistoricActivityInstanceQuery, automatically narrowed to {@link ProcessInstance} 
    * of actual {@link job} 

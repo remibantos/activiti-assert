@@ -1,15 +1,14 @@
 package org.activiti.engine.test.assertions;
 
-import org.assertj.core.api.AbstractAssert;
-import org.assertj.core.api.Assertions;
-
+import org.activiti.engine.*;
 import org.activiti.engine.history.*;
 import org.activiti.engine.repository.ProcessDefinitionQuery;
 import org.activiti.engine.runtime.ExecutionQuery;
 import org.activiti.engine.runtime.JobQuery;
 import org.activiti.engine.runtime.ProcessInstanceQuery;
-import org.activiti.engine.runtime.VariableInstanceQuery;
 import org.activiti.engine.task.TaskQuery;
+import org.assertj.core.api.AbstractAssert;
+import org.assertj.core.api.Assertions;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -115,10 +114,6 @@ public abstract class AbstractProcessAssert<S extends AbstractProcessAssert<S, A
     return engine.getManagementService();
   }
 
-  protected AuthorizationService authorizationService() {
-    return engine.getAuthorizationService();
-  }
-
   /* 
    * TaskQuery, unnarrowed. Narrow this to {@link ProcessInstance} (or {@link ProcessDefinition}) 
    * by overriding this method in sub classes specialised to verify a specific 
@@ -155,14 +150,6 @@ public abstract class AbstractProcessAssert<S extends AbstractProcessAssert<S, A
     return runtimeService().createExecutionQuery();
   }
 
-  /* 
-   * VariableInstanceQuery, unnarrowed. Narrow this to {@link ProcessInstance} (or 
-   * {@link ProcessDefinition}) by overriding this method in sub classes specialised to 
-   * verify a specific process engine domain class. 
-   */
-  protected VariableInstanceQuery variableInstanceQuery() {
-    return runtimeService().createVariableInstanceQuery();
-  }
 
   /* 
    * HistoricActivityInstanceQuery, unnarrowed. Narrow this to {@link ProcessInstance} (or 
